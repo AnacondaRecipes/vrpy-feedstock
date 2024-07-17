@@ -1,0 +1,64 @@
+{% set name = "vrpy" %}
+{% set version = "0.5.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  # switch to GH release archive because LICENSE and tests
+  url: https://github.com/Kuifje02/vrpy/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 36e86aac1b9cf5efc13fd5f961ecc93a04b4a8b12ed5e08a187c0b3ccaa08b85
+  patches:
+    - patches/0001-fix-readme-and-version.patch
+    - patches/0002-fix-from_numpy_matrix-to-from_numpy_array.patch
+
+build:
+  number: 0
+  # pulp not available py312
+  skip: true  # [py==312]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+
+requirements:
+  build:
+    - patch     # [not win]
+    - m2-patch  # [win]
+  host:
+    - python
+    - pip
+    - setuptools
+    - wheel
+  run:
+    - python
+    - cspy
+    - networkx
+    - numpy
+    - pulp
+    - coin-or-cbc
+
+test:
+  imports:
+    - vrpy
+  requires:
+    - pip
+    - pytest
+  source_files:
+    - tests
+  commands:
+    - pip check
+    - pytest -v tests
+
+about:
+  home: https://github.com/Kuifje02/vrpy
+  license: MIT
+  license_file: LICENSE
+  license_family: MIT
+  summary: A python framework for solving vehicle routing problems
+  description: |
+    A python framework for solving vehicle routing problems
+  doc_url: https://vrpy.readthedocs.io
+  dev_url: https://github.com/Kuifje02/vrpy
+
+extra:
+  recipe-maintainers:
+    - lorepirri

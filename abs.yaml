@@ -1,0 +1,6 @@
+upload_channels:
+  - sfe1ed40
+
+channels:
+  - https://staging.continuum.io/prefect/fs/cspy-feedstock/pr1/4970fbd
+  - https://staging.continuum.io/prefect/fs/lemon-feedstock/pr1/4a68186
