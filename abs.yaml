@@ -2,5 +2,5 @@ upload_channels:
   - sfe1ed40
 
 channels:
-  - https://staging.continuum.io/prefect/fs/cspy-feedstock/pr1/b0e6abc
-  - https://staging.continuum.io/prefect/fs/lemon-feedstock/pr1/85a724d
+  - https://staging.continuum.io/prefect/fs/cspy-feedstock/pr1/b310efb
+  - https://staging.continuum.io/prefect/fs/lemon-feedstock/pr1/5894d1a
