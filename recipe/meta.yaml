@@ -15,8 +15,8 @@ source:
 
 build:
   number: 0
-  # pulp not available py312
-  skip: true  # [py==312]
+  # pulp not available for s390x or py312
+  skip: true  # [s390x or py==312]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
