@@ -34,7 +34,6 @@ requirements:
     - networkx
     - numpy
     - pulp
-    - coin-or-cbc
 
 test:
   imports:
@@ -46,7 +45,8 @@ test:
     - tests
   commands:
     - pip check
-    - pytest -v tests
+    # ignore/skip tests that require the default solver PULP_CBC_CMD from pulp
+    - pytest -v --ignore=tests/test_toy.py -k "not (test_solve or test_node_load)"
 
 about:
   home: https://github.com/Kuifje02/vrpy
