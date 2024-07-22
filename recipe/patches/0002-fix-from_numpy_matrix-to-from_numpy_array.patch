@@ -1,0 +1,31 @@
+From 8ae7e5e0dc31407fc3995e567cc974a92f92dfa3 Mon Sep 17 00:00:00 2001
+From: Lorenzo Pirritano <lpirritano@anaconda.com>
+Date: Tue, 16 Jul 2024 17:21:37 +0200
+Subject: [PATCH 2/2] fix from_numpy_matrix to from_numpy_array
+
+---
+ tests/test_issue99.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_issue99.py b/tests/test_issue99.py
+index 3736134..71a4caf 100644
+--- a/tests/test_issue99.py
++++ b/tests/test_issue99.py
+@@ -1,4 +1,4 @@
+-from networkx import from_numpy_matrix, set_node_attributes, relabel_nodes, DiGraph
++from networkx import from_numpy_array, set_node_attributes, relabel_nodes, DiGraph
+ from numpy import array
+ from vrpy import VehicleRoutingProblem
+ 
+@@ -236,7 +236,7 @@ class TestIssue79:
+ 
+         # Transform distance matrix to DiGraph
+         A_ = array(distance_, dtype=[("cost", int)])
+-        G_ = from_numpy_matrix(A_, create_using=DiGraph())
++        G_ = from_numpy_array(A_, create_using=DiGraph())
+ 
+         # Set demand
+         set_node_attributes(G_, values=demands, name="demand")
+-- 
+2.39.1
+
