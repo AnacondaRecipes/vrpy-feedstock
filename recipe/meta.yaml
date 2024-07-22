@@ -14,7 +14,7 @@ source:
     - patches/0002-fix-from_numpy_matrix-to-from_numpy_array.patch
 
 build:
-  number: 0
+  number: 1
   # pulp not available for s390x or py312
   skip: true  # [s390x or py==312]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
